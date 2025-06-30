@@ -7,7 +7,6 @@ const tocPlugin = require("eleventy-plugin-nesting-toc");
 const { parse } = require("node-html-parser");
 const htmlMinifier = require("html-minifier-terser");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
-const path = require("path");
 
 const { headerToId, namedHeadingsFilter } = require("./src/helpers/utils");
 const {
@@ -30,11 +29,6 @@ function transformImage(src, cls, alt, sizes, widths = ["500", "700", "auto"]) {
   return metadata;
 }
 
-function getAutoPermalink(filePath) {
-  let noExt = filePath.replace(/\.md$/, "");
-  return `/notes/${noExt}/`;
-}
-
 function getAnchorLink(filePath, linkTitle) {
   const {attributes, innerHTML} = getAnchorAttributes(filePath, linkTitle);
   return `<a ${Object.keys(attributes).map(key => `${key}="${attributes[key]}"`).join(" ")}>${innerHTML}</a>`;
@@ -51,7 +45,7 @@ function getAnchorAttributes(filePath, linkTitle) {
 
   let noteIcon = process.env.NOTE_ICON_DEFAULT;
   const title = linkTitle ? linkTitle : fileName;
-  let permalink = getAutoPermalink(fileName);
+  let permalink = `/notes/${slugify(filePath)}`;
   let deadLink = false;
   try {
     const startPath = "./src/site/notes/";
@@ -100,22 +94,6 @@ function getAnchorAttributes(filePath, linkTitle) {
 const tagRegex = /(^|\s|\>)(#[^\s!@#$%^&*()=+\.,\[{\]};:'"?><]+)(?!([^<]*>))/g;
 
 module.exports = function (eleventyConfig) {
-  // 只保留这一处全局自动 permalink（不要重复！）
-  eleventyConfig.addGlobalData("eleventyComputed", {
-    permalink: data => {
-      if (
-        data.page &&
-        data.page.inputPath &&
-        data.page.inputPath.startsWith("./src/site/notes/") &&
-        data.page.inputPath.endsWith(".md")
-      ) {
-        const relPath = path.relative("./src/site/notes", data.page.inputPath).replace(/\\/g, "/").replace(/\.md$/, "");
-        return `/notes/${relPath}/`;
-      }
-      return data.permalink;
-    }
-  });
-
   eleventyConfig.setLiquidOptions({
     dynamicPartials: true,
   });
@@ -157,7 +135,7 @@ module.exports = function (eleventyConfig) {
     })
     .use(namedHeadingsFilter)
     .use(function (md) {
-      // 保留你 fence/image/link_open 等处理
+      //https://github.com/DCsunset/markdown-it-mermaid-plugin
       const origFenceRule =
         md.renderer.rules.fence ||
         function (tokens, idx, options, env, self) {
@@ -206,7 +184,7 @@ module.exports = function (eleventyConfig) {
             }
           }
           const foldDiv = collapsible ? `<div class="callout-fold">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sv[...]
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-chevron-down">
               <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
           </div>` : "";
@@ -224,6 +202,8 @@ module.exports = function (eleventyConfig) {
             )}</div></div>`;
           return res
         }
+
+        // Other languages
         return origFenceRule(tokens, idx, options, env, slf);
       };
 
@@ -234,6 +214,7 @@ module.exports = function (eleventyConfig) {
         };
       md.renderer.rules.image = (tokens, idx, options, env, self) => {
         const imageName = tokens[idx].content;
+        //"image.png|metadata?|width"
         const [fileName, ...widthAndMetaData] = imageName.split("|");
         const lastValue = widthAndMetaData[widthAndMetaData.length - 1];
         const lastValueIsNumber = !isNaN(lastValue);
@@ -297,10 +278,12 @@ module.exports = function (eleventyConfig) {
     return (
       str &&
       str.replace(/\[\[(.*?\|.*?)\]\]/g, function (match, p1) {
+        //Check if it is an embedded excalidraw drawing or mathjax javascript
         if (p1.indexOf("],[") > -1 || p1.indexOf('"$"') > -1) {
           return match;
         }
         const [fileLink, linkTitle] = p1.split("|");
+
         return getAnchorLink(fileLink, linkTitle);
       })
     );
@@ -398,6 +381,14 @@ module.exports = function (eleventyConfig) {
           }
         );
 
+        /* Hacky fix for callouts with only a title:
+        This will ensure callout-content isn't produced if
+        the callout only has a title, like this:
+        ```md
+        > [!info] i only have a title
+        ```
+        Not sure why content has a random <p> tag in it,
+        */
         if (content === "\n<p>\n") {
           content = "";
         }
@@ -451,6 +442,7 @@ module.exports = function (eleventyConfig) {
       />`;
     imageTag.innerHTML = html;
   }
+
 
   eleventyConfig.addTransform("picture", function (str) {
     if(process.env.USE_FULL_RESOLUTION_IMAGES === "true"){
@@ -537,6 +529,7 @@ module.exports = function (eleventyConfig) {
     ul: true,
     tags: ["h1", "h2", "h3", "h4", "h5", "h6"],
   });
+
 
   eleventyConfig.addFilter("dateToZulu", function (date) {
     try {
