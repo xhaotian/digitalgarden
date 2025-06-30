@@ -7,6 +7,7 @@ const tocPlugin = require("eleventy-plugin-nesting-toc");
 const { parse } = require("node-html-parser");
 const htmlMinifier = require("html-minifier-terser");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
+const path = require("path");
 
 const { headerToId, namedHeadingsFilter } = require("./src/helpers/utils");
 const {
@@ -29,6 +30,13 @@ function transformImage(src, cls, alt, sizes, widths = ["500", "700", "auto"]) {
   return metadata;
 }
 
+function getAutoPermalink(filePath) {
+  // filePath: Boxes/睾酮与受体.md
+  // 返回 /notes/Boxes/睾酮与受体/
+  let noExt = filePath.replace(/\.md$/, "");
+  return `/notes/${noExt}/`;
+}
+
 function getAnchorLink(filePath, linkTitle) {
   const {attributes, innerHTML} = getAnchorAttributes(filePath, linkTitle);
   return `<a ${Object.keys(attributes).map(key => `${key}="${attributes[key]}"`).join(" ")}>${innerHTML}</a>`;
@@ -45,7 +53,7 @@ function getAnchorAttributes(filePath, linkTitle) {
 
   let noteIcon = process.env.NOTE_ICON_DEFAULT;
   const title = linkTitle ? linkTitle : fileName;
-  let permalink = `/notes/${slugify(filePath)}`;
+  let permalink = getAutoPermalink(fileName);
   let deadLink = false;
   try {
     const startPath = "./src/site/notes/";
@@ -54,6 +62,7 @@ function getAnchorAttributes(filePath, linkTitle) {
       : `${startPath}${fileName}.md`;
     const file = fs.readFileSync(fullPath, "utf8");
     const frontMatter = matter(file);
+    // 优先 frontMatter.permalink，否则自动生成
     if (frontMatter.data.permalink) {
       permalink = frontMatter.data.permalink;
     }
@@ -184,7 +193,7 @@ module.exports = function (eleventyConfig) {
             }
           }
           const foldDiv = collapsible ? `<div class="callout-fold">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-chevron-down">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sv[...]
               <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
           </div>` : "";
@@ -530,7 +539,6 @@ module.exports = function (eleventyConfig) {
     tags: ["h1", "h2", "h3", "h4", "h5", "h6"],
   });
 
-
   eleventyConfig.addFilter("dateToZulu", function (date) {
     try {
       return new Date(date).toISOString("dd-MM-yyyyTHH:mm:ssZ");
@@ -560,6 +568,24 @@ module.exports = function (eleventyConfig) {
   });
 
   userEleventySetup(eleventyConfig);
+
+  // 自动为每个 md 文件生成唯一的 permalink
+  eleventyConfig.addGlobalData("eleventyComputed", {
+    permalink: data => {
+      // 只为 notes 下的 md 文件自动处理
+      if (
+        data.page &&
+        data.page.inputPath &&
+        data.page.inputPath.startsWith("./src/site/notes/") &&
+        data.page.inputPath.endsWith(".md")
+      ) {
+        // 获取相对 notes 目录的路径
+        const relPath = path.relative("./src/site/notes", data.page.inputPath).replace(/\\/g, "/").replace(/\.md$/, "");
+        return `/notes/${relPath}/`;
+      }
+      return data.permalink;
+    }
+  });
 
   return {
     dir: {
