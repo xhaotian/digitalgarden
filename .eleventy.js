@@ -561,6 +561,21 @@ module.exports = function (eleventyConfig) {
 
   userEleventySetup(eleventyConfig);
 
+  
+  // 动态生成 permalink，避免冲突
+eleventyConfig.addGlobalData("permalink", () => {
+  return (data) => {
+    // 如果是 Boxes 目录下的文件，生成 /boxes/文件名/ 的路径
+    if (data.page.inputPath.includes("/notes/Boxes/")) {
+      const fileName = data.page.fileSlug; // 获取文件名（不含扩展名）
+      return `/boxes/${fileName}/index.html`;
+    }
+    // 其他文件保持默认行为
+    return data.permalink || `/${data.page.filePathStem}/index.html`;
+  };
+});
+
+  
   return {
     dir: {
       input: "src/site",
