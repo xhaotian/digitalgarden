@@ -31,8 +31,6 @@ function transformImage(src, cls, alt, sizes, widths = ["500", "700", "auto"]) {
 }
 
 function getAutoPermalink(filePath) {
-  // filePath: Boxes/睾酮与受体.md
-  // 返回 /notes/Boxes/睾酮与受体/
   let noExt = filePath.replace(/\.md$/, "");
   return `/notes/${noExt}/`;
 }
@@ -62,7 +60,6 @@ function getAnchorAttributes(filePath, linkTitle) {
       : `${startPath}${fileName}.md`;
     const file = fs.readFileSync(fullPath, "utf8");
     const frontMatter = matter(file);
-    // 优先 frontMatter.permalink，否则自动生成
     if (frontMatter.data.permalink) {
       permalink = frontMatter.data.permalink;
     }
@@ -103,6 +100,22 @@ function getAnchorAttributes(filePath, linkTitle) {
 const tagRegex = /(^|\s|\>)(#[^\s!@#$%^&*()=+\.,\[{\]};:'"?><]+)(?!([^<]*>))/g;
 
 module.exports = function (eleventyConfig) {
+  // 只保留这一处全局自动 permalink（不要重复！）
+  eleventyConfig.addGlobalData("eleventyComputed", {
+    permalink: data => {
+      if (
+        data.page &&
+        data.page.inputPath &&
+        data.page.inputPath.startsWith("./src/site/notes/") &&
+        data.page.inputPath.endsWith(".md")
+      ) {
+        const relPath = path.relative("./src/site/notes", data.page.inputPath).replace(/\\/g, "/").replace(/\.md$/, "");
+        return `/notes/${relPath}/`;
+      }
+      return data.permalink;
+    }
+  });
+
   eleventyConfig.setLiquidOptions({
     dynamicPartials: true,
   });
@@ -144,7 +157,7 @@ module.exports = function (eleventyConfig) {
     })
     .use(namedHeadingsFilter)
     .use(function (md) {
-      //https://github.com/DCsunset/markdown-it-mermaid-plugin
+      // 保留你 fence/image/link_open 等处理
       const origFenceRule =
         md.renderer.rules.fence ||
         function (tokens, idx, options, env, self) {
@@ -211,8 +224,6 @@ module.exports = function (eleventyConfig) {
             )}</div></div>`;
           return res
         }
-
-        // Other languages
         return origFenceRule(tokens, idx, options, env, slf);
       };
 
@@ -223,7 +234,6 @@ module.exports = function (eleventyConfig) {
         };
       md.renderer.rules.image = (tokens, idx, options, env, self) => {
         const imageName = tokens[idx].content;
-        //"image.png|metadata?|width"
         const [fileName, ...widthAndMetaData] = imageName.split("|");
         const lastValue = widthAndMetaData[widthAndMetaData.length - 1];
         const lastValueIsNumber = !isNaN(lastValue);
@@ -287,12 +297,10 @@ module.exports = function (eleventyConfig) {
     return (
       str &&
       str.replace(/\[\[(.*?\|.*?)\]\]/g, function (match, p1) {
-        //Check if it is an embedded excalidraw drawing or mathjax javascript
         if (p1.indexOf("],[") > -1 || p1.indexOf('"$"') > -1) {
           return match;
         }
         const [fileLink, linkTitle] = p1.split("|");
-
         return getAnchorLink(fileLink, linkTitle);
       })
     );
@@ -390,14 +398,6 @@ module.exports = function (eleventyConfig) {
           }
         );
 
-        /* Hacky fix for callouts with only a title:
-        This will ensure callout-content isn't produced if
-        the callout only has a title, like this:
-        ```md
-        > [!info] i only have a title
-        ```
-        Not sure why content has a random <p> tag in it,
-        */
         if (content === "\n<p>\n") {
           content = "";
         }
@@ -451,7 +451,6 @@ module.exports = function (eleventyConfig) {
       />`;
     imageTag.innerHTML = html;
   }
-
 
   eleventyConfig.addTransform("picture", function (str) {
     if(process.env.USE_FULL_RESOLUTION_IMAGES === "true"){
@@ -568,24 +567,6 @@ module.exports = function (eleventyConfig) {
   });
 
   userEleventySetup(eleventyConfig);
-
-  // 自动为每个 md 文件生成唯一的 permalink
-  eleventyConfig.addGlobalData("eleventyComputed", {
-    permalink: data => {
-      // 只为 notes 下的 md 文件自动处理
-      if (
-        data.page &&
-        data.page.inputPath &&
-        data.page.inputPath.startsWith("./src/site/notes/") &&
-        data.page.inputPath.endsWith(".md")
-      ) {
-        // 获取相对 notes 目录的路径
-        const relPath = path.relative("./src/site/notes", data.page.inputPath).replace(/\\/g, "/").replace(/\.md$/, "");
-        return `/notes/${relPath}/`;
-      }
-      return data.permalink;
-    }
-  });
 
   return {
     dir: {
