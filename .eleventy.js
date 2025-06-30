@@ -23,7 +23,6 @@ function transformImage(src, cls, alt, sizes, widths = ["500", "700", "auto"]) {
     urlPath: "/img/optimized",
   };
 
-  // generate images, while this is async we don’t wait
   Image(src, options);
   let metadata = Image.statsSync(src, options);
   return metadata;
@@ -91,12 +90,24 @@ function getAnchorAttributes(filePath, linkTitle) {
   }
 }
 
-const tagRegex = /(^|\s|\>)(#[^\s!@#$%^&*()=+\.,\[{\]};:'"?><]+)(?!([^<]*>))/g;
+const tagRegex = /(^|\s|\>)(#[^\s!@#$%^&*()=+\.,$${$$};:'"?><]+)(?!([^<]*>))/g;
 
 module.exports = function (eleventyConfig) {
+  // ==================== 新增的全局 permalink 配置 ====================
+  eleventyConfig.addGlobalData("permalink", (data) => {
+    // 处理 Boxes 目录下的文件
+    if (data.page.inputPath.includes("/notes/Boxes/")) {
+      const fileName = data.page.fileSlug;
+      return `/boxes/${slugify(fileName)}/index.html`; // 强制唯一路径
+    }
+    // 其他文件保持默认行为
+    return data.permalink || `/${data.page.filePathStem}/index.html`;
+  });
+
   eleventyConfig.setLiquidOptions({
     dynamicPartials: true,
   });
+
   let markdownLib = markdownIt({
     breaks: true,
     html: true,
@@ -135,7 +146,6 @@ module.exports = function (eleventyConfig) {
     })
     .use(namedHeadingsFilter)
     .use(function (md) {
-      //https://github.com/DCsunset/markdown-it-mermaid-plugin
       const origFenceRule =
         md.renderer.rules.fence ||
         function (tokens, idx, options, env, self) {
@@ -203,7 +213,6 @@ module.exports = function (eleventyConfig) {
           return res
         }
 
-        // Other languages
         return origFenceRule(tokens, idx, options, env, slf);
       };
 
@@ -214,7 +223,6 @@ module.exports = function (eleventyConfig) {
         };
       md.renderer.rules.image = (tokens, idx, options, env, self) => {
         const imageName = tokens[idx].content;
-        //"image.png|metadata?|width"
         const [fileName, ...widthAndMetaData] = imageName.split("|");
         const lastValue = widthAndMetaData[widthAndMetaData.length - 1];
         const lastValueIsNumber = !isNaN(lastValue);
@@ -277,8 +285,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("link", function (str) {
     return (
       str &&
-      str.replace(/\[\[(.*?\|.*?)\]\]/g, function (match, p1) {
-        //Check if it is an embedded excalidraw drawing or mathjax javascript
+      str.replace(/$$\[(.*?\|.*?)$$\]/g, function (match, p1) {
         if (p1.indexOf("],[") > -1 || p1.indexOf('"$"') > -1) {
           return match;
         }
@@ -318,7 +325,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("hideDataview", function (str) {
     return (
       str &&
-      str.replace(/\(\S+\:\:(.*)\)/g, function (_, value) {
+      str.replace(/$$\S+\:\:(.*)$$/g, function (_, value) {
         return value.trim();
       })
     );
@@ -355,7 +362,7 @@ module.exports = function (eleventyConfig) {
         let calloutMetaData = "";
         let isCollapsable;
         let isCollapsed;
-        const calloutMeta = /\[!([\w-]*)\|?(\s?.*)\](\+|\-){0,1}(\s?.*)/;
+        const calloutMeta = /$$!([\w-]*)\|?(\s?.*)$$(\+|\-){0,1}(\s?.*)/;
         if (!content.match(calloutMeta)) {
           continue;
         }
@@ -381,14 +388,6 @@ module.exports = function (eleventyConfig) {
           }
         );
 
-        /* Hacky fix for callouts with only a title:
-        This will ensure callout-content isn't produced if
-        the callout only has a title, like this:
-        ```md
-        > [!info] i only have a title
-        ```
-        Not sure why content has a random <p> tag in it,
-        */
         if (content === "\n<p>\n") {
           content = "";
         }
@@ -442,7 +441,6 @@ module.exports = function (eleventyConfig) {
       />`;
     imageTag.innerHTML = html;
   }
-
 
   eleventyConfig.addTransform("picture", function (str) {
     if(process.env.USE_FULL_RESOLUTION_IMAGES === "true"){
@@ -530,7 +528,6 @@ module.exports = function (eleventyConfig) {
     tags: ["h1", "h2", "h3", "h4", "h5", "h6"],
   });
 
-
   eleventyConfig.addFilter("dateToZulu", function (date) {
     try {
       return new Date(date).toISOString("dd-MM-yyyyTHH:mm:ssZ");
@@ -561,21 +558,6 @@ module.exports = function (eleventyConfig) {
 
   userEleventySetup(eleventyConfig);
 
-  
-  // 动态生成 permalink，避免冲突
-eleventyConfig.addGlobalData("permalink", () => {
-  return (data) => {
-    // 如果是 Boxes 目录下的文件，生成 /boxes/文件名/ 的路径
-    if (data.page.inputPath.includes("/notes/Boxes/")) {
-      const fileName = data.page.fileSlug; // 获取文件名（不含扩展名）
-      return `/boxes/${fileName}/index.html`;
-    }
-    // 其他文件保持默认行为
-    return data.permalink || `/${data.page.filePathStem}/index.html`;
-  };
-});
-
-  
   return {
     dir: {
       input: "src/site",
