@@ -1,5 +1,5 @@
 ---
-{"date":"2025-03-22","tags":["input"],"project":"MR_rep","modified":["2025-09-24","2025-05-02"],"dg-publish":true,"permalink":"/_root/R环境配置/","dgPassFrontmatter":true}
+{"date":"2025-03-22","tags":["input"],"project":"MR_rep","modified":"2025-09-24,2025-05-02","dg-publish":true,"permalink":"/_root/R环境配置/","dgPassFrontmatter":true}
 ---
 
 # R语言及一般包的配置
@@ -36,5 +36,5 @@ options(timeout = 9999999999999999999999)
 devtools::install_github("mrcieu/gwasglue")
 ```
 
-1. **轻蜂加速器**★★★ 
+2. **轻蜂加速器**★★★ 
 一个月￥38，可以尝试，可以登陆合法境外网站，不涉及翻墙
