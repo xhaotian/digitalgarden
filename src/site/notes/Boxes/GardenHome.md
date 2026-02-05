@@ -11,7 +11,10 @@
 
 { .block-language-dataview}
 
+- [[Boxes/生信相关MCP\|生信相关MCP]]
 - [[Boxes/win、ubuntu 安装node.js、opencode、ohmyopencode\|win、ubuntu 安装node.js、opencode、ohmyopencode]]
+- [[Boxes/windows系统中OpenCode默认代理设置\|windows系统中OpenCode默认代理设置]]
+- [[Boxes/OpenCode使用方法\|OpenCode使用方法]]
 - [[Boxes/统计之光--差异分析逻辑总结\|统计之光--差异分析逻辑总结]]
 - [[Boxes/统计之光--PPI网络图制作步骤\|统计之光--PPI网络图制作步骤]]
 - [[Boxes/统计之光--数据预处理逻辑总结\|统计之光--数据预处理逻辑总结]]
