@@ -1,6 +1,11 @@
 ---
-{"modified":["2026-02-05"],"dg-publish":true,"permalink":"/Boxes/生信相关MCP/","dgPassFrontmatter":true}
+{"modified":["2026-02-06","2026-02-05"],"dg-publish":true,"permalink":"/Boxes/生信相关MCP/","dgPassFrontmatter":true}
 ---
+
+
+
+
+
 
 # BioMCP
 
@@ -236,5 +241,8 @@ agent: plan
 我可以把第 4 节的 Obsidian 模板和第 5 节的 `/pubmed` 命令进一步定制成：
 - 自动输出你需要的字段（比如 **细胞数、批次数、测序平台、QC/整合方法、marker 基因、数据 accession**）
 - 自动生成“下一步可复现分析 checklist”（更贴合你单细胞+多组学整合的工作流）
-```
+
+
+
+
 
