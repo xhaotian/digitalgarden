@@ -54,7 +54,6 @@
 - [[Boxes/剥脱性青光眼\|剥脱性青光眼]]
 - [[Boxes/体质数据的测量与记录\|体质数据的测量与记录]]
 - [[Boxes/WGCNA过程总结\|WGCNA过程总结]]
-- [[_root/coding/R包安装指南\|R包安装指南]]
 - [[Boxes/LASSO回归\|LASSO回归]]
 - [[Boxes/常规转录组分析\|常规转录组分析]]
 - [[Boxes/A2A\|A2A]]
