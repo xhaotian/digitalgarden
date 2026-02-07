@@ -1,4 +1,4 @@
 ---
-{"dg-publish":true,"permalink":"/Template/to_publish/"}
+{"dg-publish":true,"permalink":"//to_publish/"}
 ---
 
