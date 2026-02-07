@@ -18,13 +18,13 @@
 >		限制套餐购买，每日上午10点更新释放
 
 
-### 个人策略
+### 个人暂用策略
 #### 复杂度高的项目规划
 plan模式短暂使用claude opus
 
 #### 平素使用：kimi+GLM+minimax
 GLM、minimax，都购买套餐，一个每日额度用尽后用另一个
 kimi，平素当作claude平替使用
-
+火山coding plan首月9.9，pro版本49（可用kimi GLM）
 #### 持续关注新闻及博主分享
 哪里有羊毛可以薅
