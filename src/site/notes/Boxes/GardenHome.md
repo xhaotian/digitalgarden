@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-home":true,"tags":["project","gardenEntry"],"modified":["2026-02-05","2025-12-20"],"permalink":"/Boxes/GardenHome/","dgPassFrontmatter":true}
+{"dg-publish":true,"permalink":"/Boxes/GardenHome/","tags":["project","gardenEntry"]}
 ---
 
 

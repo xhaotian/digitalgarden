@@ -1,5 +1,5 @@
 ---
-{"modified":["2026-02-07","2026-02-06"],"dg-publish":true,"permalink":"/Boxes/通用MCP/","dgPassFrontmatter":true}
+{"dg-publish":true,"permalink":"/Boxes/通用MCP/"}
 ---
 
 # Latex处理

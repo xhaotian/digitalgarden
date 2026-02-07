@@ -1,5 +1,5 @@
 ---
-{"tags":["input","fleeting"],"project":"GEO数据挖掘","modified":["2025-10-02","2025-09-26"],"dg-publish":true,"permalink":"/Boxes/GEO挖掘常用R包/","dgPassFrontmatter":true}
+{"dg-publish":true,"permalink":"/Boxes/GEO挖掘常用R包/","tags":["input","fleeting"]}
 ---
 
 

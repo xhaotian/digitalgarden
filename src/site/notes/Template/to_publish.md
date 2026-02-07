@@ -1,4 +1,4 @@
 ---
-{"dg-publish":true,"permalink":"/Template/to_publish/","dgPassFrontmatter":true}
+{"dg-publish":true,"permalink":"/Template/to_publish/"}
 ---
 

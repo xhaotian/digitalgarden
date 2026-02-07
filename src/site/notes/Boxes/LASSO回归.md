@@ -1,5 +1,5 @@
 ---
-{"tags":["input","fleeting"],"project":"GEO数据挖掘","modified":["2025-10-02","2025-09-26","2025-09-25"],"dg-publish":true,"permalink":"/Boxes/LASSO回归/","dgPassFrontmatter":true}
+{"dg-publish":true,"permalink":"/Boxes/LASSO回归/","tags":["input","fleeting"]}
 ---
 
 >[! note]  LASSO回归总结

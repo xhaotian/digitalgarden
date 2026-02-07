@@ -1,5 +1,5 @@
 ---
-{"tags":["input"],"project":"GEO数据挖掘","modified":["2025-10-02","2025-09-29","2025-09-27","2025-09-26","2025-09-24","2025-09-16"],"dg-publish":true,"permalink":"/Boxes/差异表达分析（DEG）/","dgPassFrontmatter":true}
+{"dg-publish":true,"permalink":"/Boxes/差异表达分析（DEG）/","tags":["input"]}
 ---
 
 其分析结果为**找到两组间显著差异的基因**。

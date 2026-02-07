@@ -1,5 +1,5 @@
 ---
-{"modified":["2025-10-02","2025-09-27"],"tags":["input","fleeting"],"dg-publish":true,"permalink":"/Boxes/TCGA样本名编码信息/","dgPassFrontmatter":true}
+{"dg-publish":true,"permalink":"/Boxes/TCGA样本名编码信息/","tags":["input","fleeting"]}
 ---
 
 ![v2-3505fccf54c1c038ba082410dc0b477d_1440w](/img/user/Boxes/Attachments/v2-3505fccf54c1c038ba082410dc0b477d_1440w.jpg)

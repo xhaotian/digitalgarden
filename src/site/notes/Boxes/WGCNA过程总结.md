@@ -1,5 +1,5 @@
 ---
-{"tags":["output/workflow"],"project":"GEO数据挖掘","modified":["2025-10-02","2025-09-26","2025-09-21","2025-09-16","2025-09-15","2025-09-11","2025-09-10"],"dg-publish":true,"permalink":"/Boxes/WGCNA过程总结/","dgPassFrontmatter":true}
+{"dg-publish":true,"permalink":"/Boxes/WGCNA过程总结/","tags":["output/workflow"]}
 ---
 
 如果把 WGCNA 比作 “给基因找同伙、分帮派” 的过程：

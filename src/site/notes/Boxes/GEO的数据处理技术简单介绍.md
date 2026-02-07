@@ -1,5 +1,5 @@
 ---
-{"tags":["input","fleeting"],"project":"GEO数据挖掘","modified":["2025-10-02","2025-09-26"],"dg-publish":true,"permalink":"/Boxes/GEO的数据处理技术简单介绍/","dgPassFrontmatter":true}
+{"dg-publish":true,"permalink":"/Boxes/GEO的数据处理技术简单介绍/","tags":["input","fleeting"]}
 ---
 
 本文AI生成

@@ -1,5 +1,5 @@
 ---
-{"modified":["2026-02-07"],"dg-publish":true,"permalink":"/Boxes/Opencode：model性能价格与个人使用策略/","dgPassFrontmatter":true}
+{"dg-publish":true,"permalink":"/Boxes/Opencode：model性能价格与个人使用策略/"}
 ---
 
 ### 2026-01 现今情况（from 各平台博主分享）

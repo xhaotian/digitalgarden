@@ -1,5 +1,5 @@
 ---
-{"modified":["2026-02-05"],"dg-publish":true,"permalink":"/Boxes/windows系统中OpenCode默认代理设置/","dgPassFrontmatter":true}
+{"dg-publish":true,"permalink":"/Boxes/windows系统中OpenCode默认代理设置/"}
 ---
 
 ## 默认代理（OpenCode CLI）：用系统环境变量设置（推荐、最像“默认”）

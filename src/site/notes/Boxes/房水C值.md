@@ -1,5 +1,5 @@
 ---
-{"tags":["input","fleeting"],"memorize":false,"project":"眼科检查","modified":["2025-07-01","2025-06-15"],"dg-publish":true,"permalink":"/Boxes/房水C值/","dgPassFrontmatter":true}
+{"dg-publish":true,"permalink":"/Boxes/房水C值/","tags":["input","fleeting"]}
 ---
 
 房水流畅系数（C值）是评估房水排出系统功能的重要指标.（现临床中少用）

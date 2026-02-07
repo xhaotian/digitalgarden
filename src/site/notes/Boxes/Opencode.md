@@ -1,5 +1,5 @@
 ---
-{"modified":["2026-02-07","2026-02-06","2026-02-05"],"dg-publish":true,"tags":["project"],"permalink":"/Boxes/Opencode/","dgPassFrontmatter":true}
+{"dg-publish":true,"permalink":"/Boxes/Opencode/","tags":["project"]}
 ---
 
 

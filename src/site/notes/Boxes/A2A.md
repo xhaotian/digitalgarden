@@ -1,5 +1,5 @@
 ---
-{"tags":["input"],"memorize":false,"project":"眼科临床","modified":["2025-06-30","2025-06-28"],"aliases":["AA","α2受体激动剂","阿法根","酒石酸溴莫尼定","对氨基可乐定"],"dg-publish":true,"permalink":"/Boxes/A2A/","dgPassFrontmatter":true}
+{"dg-publish":true,"permalink":"/Boxes/A2A/","tags":["input"]}
 ---
 
 α2受体激动剂

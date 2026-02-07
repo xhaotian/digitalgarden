@@ -1,5 +1,5 @@
 ---
-{"modified":["2026-02-06","2026-02-05"],"dg-publish":true,"permalink":"/Boxes/生信相关MCP/","dgPassFrontmatter":true}
+{"dg-publish":true,"permalink":"/Boxes/生信相关MCP/"}
 ---
 
 

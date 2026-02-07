@@ -1,5 +1,5 @@
 ---
-{"modified":["2026-02-06","2026-02-05"],"dg-publish":true,"permalink":"/Boxes/win、ubuntu 安装node.js、opencode、ohmyopencode/","dgPassFrontmatter":true}
+{"dg-publish":true,"permalink":"/Boxes/win、ubuntu 安装node.js、opencode、ohmyopencode/"}
 ---
 
 
