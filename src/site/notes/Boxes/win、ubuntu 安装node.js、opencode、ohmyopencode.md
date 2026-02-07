@@ -1,5 +1,5 @@
 ---
-{"modified":["2026-02-05"],"dg-publish":true,"permalink":"/Boxes/win、ubuntu 安装node.js、opencode、ohmyopencode/","dgPassFrontmatter":true}
+{"modified":["2026-02-06","2026-02-05"],"dg-publish":true,"permalink":"/Boxes/win、ubuntu 安装node.js、opencode、ohmyopencode/","dgPassFrontmatter":true}
 ---
 
 
@@ -72,7 +72,7 @@ node -v # 确认版本
 npm i -g opencode-ai
 ```
 
-***！！！发：！！！***
+***！！！配置model后发给opencode：！！！***
 ```
 Install and configure oh-my-opencode by following the instructions here:
 https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/refs/heads/master/docs/guide/installation.md

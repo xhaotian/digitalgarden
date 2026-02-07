@@ -1,5 +1,5 @@
 ---
-{"modified":["2026-02-05","2026-02-04"],"dg-publish":true,"permalink":"/Boxes/OpenCode使用方法/","dgPassFrontmatter":true}
+{"modified":["2026-02-06","2026-02-05","2026-02-04"],"dg-publish":true,"permalink":"/Boxes/OpenCode使用方法/","dgPassFrontmatter":true}
 ---
 
 此文档转自我非常喜爱的技术大佬“**杰森的效率工坊**”
