@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Boxes/win、ubuntu 安装node.js、opencode、ohmyopencode/"}
+{"dg-publish":true,"permalink":"/Boxes/win、ubuntu 安装node.js、opencode、ohmyopencode/","noteIcon":"","created":"2026-02-05T14:46:41.911+08:00","updated":"2026-02-07T14:42:16.413+08:00"}
 ---
 
 

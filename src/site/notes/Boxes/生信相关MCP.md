@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Boxes/生信相关MCP/"}
+{"dg-publish":true,"permalink":"/Boxes/生信相关MCP/","noteIcon":"","created":"2026-02-05T15:36:00.135+08:00","updated":"2026-02-06T00:09:51.905+08:00"}
 ---
 
 

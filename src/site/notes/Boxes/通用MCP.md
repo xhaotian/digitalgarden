@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Boxes/通用MCP/"}
+{"dg-publish":true,"permalink":"/Boxes/通用MCP/","noteIcon":"","created":"2026-02-06T00:10:06.669+08:00","updated":"2026-02-07T12:05:25.669+08:00"}
 ---
 
 # Latex处理

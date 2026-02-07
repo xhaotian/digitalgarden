@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Boxes/统计之光--COX回归分析/","tags":["fleeting","brief_note"]}
+{"dg-publish":true,"permalink":"/Boxes/统计之光--COX回归分析/","tags":["fleeting","brief_note"],"noteIcon":"","created":"2025-09-27T13:46:24.418+08:00","updated":"2025-10-02T00:55:34.633+08:00"}
 ---
 
 # 单因素COX回归分析

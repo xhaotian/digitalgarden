@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Boxes/Opencode/","tags":["project"]}
+{"dg-publish":true,"permalink":"/Boxes/Opencode/","tags":["project"],"noteIcon":"","created":"2026-02-05T14:41:54.358+08:00","updated":"2026-02-07T17:31:05.131+08:00"}
 ---
 
 ## 转载：简要介绍

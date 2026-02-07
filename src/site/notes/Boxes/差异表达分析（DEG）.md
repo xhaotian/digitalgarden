@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Boxes/差异表达分析（DEG）/","tags":["input"]}
+{"dg-publish":true,"permalink":"/Boxes/差异表达分析（DEG）/","tags":["input"],"noteIcon":"","created":"2025-09-25T22:27:23.061+08:00","updated":"2025-10-02T00:56:18.213+08:00"}
 ---
 
 其分析结果为**找到两组间显著差异的基因**。

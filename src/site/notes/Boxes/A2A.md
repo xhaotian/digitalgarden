@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Boxes/A2A/","tags":["input"]}
+{"dg-publish":true,"permalink":"/Boxes/A2A/","tags":["input"],"noteIcon":"","created":"2025-09-25T22:27:22.798+08:00","updated":"2025-06-30T22:27:19.944+08:00"}
 ---
 
 α2受体激动剂

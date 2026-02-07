@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Boxes/统计之光--PPI网络图制作步骤/","tags":["input","fleeting"]}
+{"dg-publish":true,"permalink":"/Boxes/统计之光--PPI网络图制作步骤/","tags":["input","fleeting"],"noteIcon":"","created":"2025-09-28T13:01:08.613+08:00","updated":"2025-10-02T00:59:17.418+08:00"}
 ---
 
 蛋白质相互作用网络(protein protein interaction network, PPI network)。

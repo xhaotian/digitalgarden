@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Boxes/WGCNA过程总结/","tags":["output/workflow"]}
+{"dg-publish":true,"permalink":"/Boxes/WGCNA过程总结/","tags":["output/workflow"],"noteIcon":"","created":"2025-09-25T22:27:22.987+08:00","updated":"2025-10-02T00:59:47.075+08:00"}
 ---
 
 如果把 WGCNA 比作 “给基因找同伙、分帮派” 的过程：
