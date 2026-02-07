@@ -5,6 +5,7 @@
 
 | Project                         | Creation Date |
 | ------------------------------- | ------------- |
+| [[Boxes/Opencode\|Opencode]] | 2026-02-05    |
 | [[Boxes/运动与训练\|运动与训练]]       | 2025-09-25    |
 | [[Boxes/常规转录组分析\|常规转录组分析]]   | 2025-09-25    |
 | [[Boxes/80分·眼科临床\|80分·眼科临床]] | 2025-09-25    |
@@ -12,8 +13,10 @@
 { .block-language-dataview}
 
 - [[Boxes/Opencode：model性能价格与个人使用策略\|Opencode：model性能价格与个人使用策略]]
+- [[Boxes/通用MCP\|通用MCP]]
 - [[Boxes/生信相关MCP\|生信相关MCP]]
 - [[Boxes/win、ubuntu 安装node.js、opencode、ohmyopencode\|win、ubuntu 安装node.js、opencode、ohmyopencode]]
+- [[Boxes/Opencode\|Opencode]]
 - [[Boxes/windows系统中OpenCode默认代理设置\|windows系统中OpenCode默认代理设置]]
 - [[Boxes/OpenCode使用方法\|OpenCode使用方法]]
 - [[Boxes/统计之光--差异分析逻辑总结\|统计之光--差异分析逻辑总结]]
