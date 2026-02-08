@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Boxes/Opencode/","tags":["project"],"noteIcon":"","created":"2026-02-05T14:41:54.358+08:00","updated":"2026-02-07T19:00:18.373+08:00"}
+{"dg-publish":true,"permalink":"/Boxes/Opencode/","tags":["project"],"noteIcon":"","created":"2026-02-05T14:41:54.358+08:00","updated":"2026-02-08T16:17:12.138+08:00"}
 ---
 
 ## 转载：简要介绍
@@ -14,5 +14,8 @@
 
 ## 暂时在用的MCP
 [[Boxes/生信相关MCP\|生信相关MCP]]
-[[Boxes/通用MCP\|通用MCP]]
 
+
+[[Boxes/Latex处理\|Latex处理]]
+[[Boxes/opencode-exa-search\|opencode-exa-search]]
+[[Boxes/重要：谷歌浏览器自动操作（chrome-devtools-mcp）\|重要：谷歌浏览器自动操作（chrome-devtools-mcp）]]

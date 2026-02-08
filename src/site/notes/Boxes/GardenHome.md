@@ -12,8 +12,10 @@
 { .block-language-dataview}
 
 
+- [[Boxes/重要：谷歌浏览器自动操作（chrome-devtools-mcp）\|重要：谷歌浏览器自动操作（chrome-devtools-mcp）]]
+- [[Boxes/opencode-exa-search\|opencode-exa-search]]
 - [[Boxes/Opencode：model性能价格与个人使用策略\|Opencode：model性能价格与个人使用策略]]
-- [[Boxes/通用MCP\|通用MCP]]
+- [[Boxes/Latex处理\|Latex处理]]
 - [[Boxes/生信相关MCP\|生信相关MCP]]
 - [[Boxes/win、ubuntu 安装node.js、opencode、ohmyopencode\|win、ubuntu 安装node.js、opencode、ohmyopencode]]
 - [[Boxes/Opencode\|Opencode]]
